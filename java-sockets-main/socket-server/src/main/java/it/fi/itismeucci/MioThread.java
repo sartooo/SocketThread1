@@ -10,17 +10,22 @@ public class MioThread extends Thread
     }
 
     public void run() {
-        try {
-            System.out.println("CIAO CIAO");
-            BufferedReader in = new BufferedReader(new InputStreamReader(cli.getInputStream()));
-            DataOutputStream out = new DataOutputStream(cli.getOutputStream());
-            String recv = in.readLine();
-            System.out.print("Stringa ricevuta: " + recv);
-            String modifiedRecv = recv.toUpperCase();
-            out.writeBytes(modifiedRecv + '\n');
-            cli.close();
-        } catch (IOException e) {
-            System.out.println("Evvove mio");
+        for(;;)
+        {
+            try {
+                BufferedReader in = new BufferedReader(new InputStreamReader(cli.getInputStream()));
+                DataOutputStream out = new DataOutputStream(cli.getOutputStream());
+                String recv = in.readLine();
+                System.out.print("Stringa ricevuta: " + recv);
+                String modifiedRecv = recv.toUpperCase();
+                out.writeBytes(modifiedRecv + '\n');
+                
+            } catch (IOException e) {
+                System.out.println("Evvove mio");
+            }
         }
+            
+        
+        
     }
 }
