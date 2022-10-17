@@ -28,8 +28,12 @@ public class SocketClient {
                 socket.close();
                 return;
             }
+           
             out.writeBytes(userString + '\n');
             serverString = in.readLine();
+            if (userString.equals("SPEGNI")) {
+                return;
+            }
             System.out.print("Risposta dal server: " + serverString + '\n');
 
         }
